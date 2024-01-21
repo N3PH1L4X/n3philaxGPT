@@ -22,7 +22,7 @@ banner = """\n\n
 ░░░░ ░░░░░ ░░░░░░░░ ░███░░░░░░░ ░░░░░░░░░░░░░ ░░░░░░░░░░░░ ░░░░░ ░░░░░░░░░ ░░░░░          ░░░░░    
                     ░███                                                                           
                     █████        Implementacion de ChatGPT en bot de discord con Python
-                   ░░░░░      Desarrollado por José López (n3philax) | Enlace al repo
+                   ░░░░░      Desarrollado por José López (n3philax) | https://github.com/N3PH1L4X/n3philaxGPT
 \n\n"""
 
 def enviarMensajeChatGPT(prompt, model="gpt-3.5-turbo"):
