@@ -22,7 +22,7 @@ banner = """\n\n
 ░░░░ ░░░░░ ░░░░░░░░ ░███░░░░░░░ ░░░░░░░░░░░░░ ░░░░░░░░░░░░ ░░░░░ ░░░░░░░░░ ░░░░░          ░░░░░    
                     ░███                                                                           
                     █████        Implementacion de ChatGPT en bot de discord con Python
-                   ░░░░░      Desarrollado por José López (n3philax) | https://github.com/N3PH1L4X/n3philaxGPT
+                   ░░░░░    Desarrollado por José López (n3philax) | https://github.com/N3PH1L4X/n3philaxGPT
 \n\n"""
 
 def enviarMensajeChatGPT(prompt, model="gpt-3.5-turbo"):
@@ -58,8 +58,15 @@ async def on_ready():
 async def on_message(message):
     if message.channel.id in canales_para_escuchar:
         print(f">>>> Mensaje de {message.author} recibido <<<<\n{message.content}\n")
-        print(enviarMensajeChatGPT(prompt=message.content))
+        
+        try:
+            respuestaGPT = enviarMensajeChatGPT(prompt=message.content)
+        except Exception as e:
+            respuestaGPT = e
 
-    time.sleep(1)
+        canal = client.get_channel(message.channel.id)
+        if message.author != client.user:
+            await canal.send(respuestaGPT)
+            
 
 client.run(discord_token)
